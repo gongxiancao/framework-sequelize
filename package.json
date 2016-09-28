@@ -1,0 +1,24 @@
+{
+  "name": "framework-sequelize",
+  "version": "1.0.0",
+  "description": "sequelize model provider",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gongxiancao/framework-sequelize.git"
+  },
+  "author": "GongXian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gongxiancao/framework-sequelize/issues"
+  },
+  "homepage": "https://github.com/gongxiancao/framework-sequelize#readme",
+  "dependencies": {
+    "pg": "^6.1.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.24.3"
+  }
+}
