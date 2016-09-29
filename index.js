@@ -5,6 +5,8 @@ var _ = require('lodash'),
   pathUtil = require('path'),
   Promise = require('bluebird');
 
+var connections = {};
+
 function lift (done) {
   var self = this;
   var modelsConfig = self.config.models;
@@ -33,7 +35,6 @@ function lift (done) {
       })];
     })
     .spread(function (fileNames, filePaths, fileStats) {
-      var connections = {};
       var models = {};
       // get model definitions and connection definitions
       _.each(fileNames, function (fileName, index) {
@@ -64,8 +65,8 @@ function lift (done) {
           connectionConfig.database,
           connectionConfig.username,
           connectionConfig.password,
-          _.extend({}, modelsConfig.options, {host: connectionConfig.host}));
-        if(modelsConfig.sync) {
+          connectionConfig.options);
+        if(connectionConfig.sync) {
           connection.sync();
         }
         return connection;
@@ -73,7 +74,8 @@ function lift (done) {
 
       self.models = _.mapValues(models, function (model, modelName) {
         var connectionName = model.options.connection || defaultConnectionName;
-        return connections[connectionName].define(modelName, model.attributes);
+        var modelOptions = _.merge(modelsConfig.options, model.options);
+        return connections[connectionName].define(modelName.toLowerCase(), model.attributes, modelOptions);
       });
       _.extend(global, self.models);
       return models;
@@ -90,7 +92,9 @@ function lift (done) {
 }
 
 function lower (done) {
-  process.nextTick(done);
+  Promise.map(_.values(connections), function (connection) {
+    return connection.close();
+  }).asCallback(done);
 }
 
 module.exports = {
