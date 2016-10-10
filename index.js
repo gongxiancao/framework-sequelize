@@ -74,7 +74,7 @@ function lift (done) {
 
       self.models = _.mapValues(models, function (model, modelName) {
         var connectionName = model.options.connection || defaultConnectionName;
-        var modelOptions = _.merge(modelsConfig.options, model.options);
+        var modelOptions = _.merge({}, modelsConfig.options, model.options);
         return connections[connectionName].define(modelName.toLowerCase(), model.attributes, modelOptions);
       });
       _.extend(global, self.models);
