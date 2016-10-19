@@ -66,7 +66,7 @@ function lift (done) {
           connectionConfig.username,
           connectionConfig.password,
           connectionConfig.options);
-        if(connectionConfig.sync) {
+        if(connectionConfig.options.sync) {
           connection.sync();
         }
         return connection;
