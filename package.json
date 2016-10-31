@@ -1,5 +1,5 @@
 {
-  "name": "framework-sequelize",
+  "name": "ofa-sequelize",
   "version": "1.0.0",
   "description": "sequelize model provider",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gongxiancao/framework-sequelize.git"
+    "url": "git+https://github.com/gongxiancao/ofa-sequelize.git"
   },
   "author": "GongXian",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gongxiancao/framework-sequelize/issues"
+    "url": "https://github.com/gongxiancao/ofa-sequelize/issues"
   },
-  "homepage": "https://github.com/gongxiancao/framework-sequelize#readme",
+  "homepage": "https://github.com/gongxiancao/ofa-sequelize#readme",
   "dependencies": {
     "pg": "^6.1.0",
     "pg-hstore": "^2.3.2",

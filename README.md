@@ -1,2 +1,2 @@
-# framework-sequelize
+# ofa-sequelize
 sequelize model provider
